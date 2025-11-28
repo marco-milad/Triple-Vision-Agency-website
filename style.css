@@ -651,19 +651,19 @@ body {
 
     .animate {
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
+      animation: fadeUp 0.9s ease forwards;
     }
 
     .animate.delay-1 {
-      animation-delay: 0.2s;
-    }
-
-    .animate.delay-2 {
       animation-delay: 0.4s;
     }
 
-    .animate.delay-3 {
+    .animate.delay-2 {
       animation-delay: 0.6s;
+    }
+
+    .animate.delay-3 {
+      animation-delay: 0.8s;
     }
 
     /* ==============================
@@ -708,7 +708,7 @@ body {
 
       .hero-video {
   padding: 0;
-  width: 97%;
+  width: 99%;
   position: relative;
   
 }
@@ -736,9 +736,37 @@ body {
       }
 
       .hero-video video {
-        height: 300px;
+        height: 400px;
       }
     }
+
+    #muteIcon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+  }
+
+  #muteIcon:active {
+    transform: scale(0.9);
+  }
+
+  @media (max-width: 768px) {
+    .hero-video video {
+      height: 300px;
+    }
+  }
 
 /* ==============================
    FOOTER STYLES
@@ -962,3 +990,83 @@ body {
     font-size: 14px;
   }
 }
+
+/* button start */
+/* ===== زر الرجوع للأعلى ===== */
+#backToTop,
+#whatsappBtn {
+  position: fixed;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 99999;
+}
+
+#backToTop {
+  bottom: 90px; /* خليه فوق زر الواتساب بمسافة */
+  background-color: var(--primary-color); /* برتقالي */
+  color: var(--light-text);
+}
+
+#backToTop:hover {
+  background-color: var(--secondary-color); /* اللون الثانوي */
+  transform: scale(1.1);
+}
+
+/* ===== زر الواتساب ===== */
+#whatsappBtn {
+  bottom: 25px; /* أسفل الشاشة */
+  
+  /* بدل الأصفر، هنخليه من الهوية */
+  background-color: var(--primary-color);
+  color: var(--light-text);
+
+  display: flex;
+  animation: pulse 2s infinite;
+}
+
+#whatsappBtn:hover {
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  transform: scale(1.1);
+  animation-play-state: paused;
+}
+
+/* ===== تأثير النبض ===== */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6); /* primary-color */
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(255, 140, 0, 0.3);
+  }
+}
+
+/* ===== موبايل محسّن ===== */
+@media (max-width: 600px) {
+  #backToTop,
+  #whatsappBtn {
+    width: 50px;        
+    height: 50px;
+    font-size: 20px;    
+    right: 15px;          
+    z-index: 99999;      
+  }
+
+  #backToTop {
+    bottom: 80px;         
+  }
+
+  #whatsappBtn {
+    bottom: 20px;        
+  }
+}
+
+
+/* button end */
