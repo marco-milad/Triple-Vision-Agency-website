@@ -38,46 +38,160 @@ if (video && muteIcon) {
 }
 
 // ==============================
-// FLOATING BUTTONS
+// BACK TO TOP BUTTON - COMPLETE FIX
 // ==============================
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // Back to Top Button
-  if (!document.getElementById('backToTop')) {
-    const backBtn = document.createElement('button');
-    backBtn.id = 'backToTop';
-    backBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    backBtn.setAttribute('aria-label', 'Back to top');
-    backBtn.style.display = 'none';
-    document.body.appendChild(backBtn);
+(function() {
+  'use strict';
 
-    // Optimized Scroll Handler (Throttle)
+  // إنشاء الزرار
+  function createBackToTopButton() {
+    let btn = document.getElementById('backToTop');
+    
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'backToTop';
+      btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+      btn.setAttribute('aria-label', 'Back to top');
+      btn.setAttribute('type', 'button');
+      document.body.appendChild(btn);
+      
+      console.log('✅ Back to Top button created');
+    }
+    
+    return btn;
+  }
+
+  // Show/Hide على حسب الـ Scroll
+  function toggleButtonVisibility(btn) {
+    const scrollThreshold = 300;
+    
+    if (window.scrollY > scrollThreshold) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  // Scroll to Top Function
+  function scrollToTop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    console.log('🚀 Scrolling to top');
+  }
+
+  // Initialize
+  function init() {
+    const btn = createBackToTopButton();
+    
+    // Scroll Event (Optimized)
     let isScrolling = false;
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
       if (!isScrolling) {
-        window.requestAnimationFrame(() => {
-          backBtn.style.display = window.scrollY > 100 ? 'flex' : 'none';
+        window.requestAnimationFrame(function() {
+          toggleButtonVisibility(btn);
           isScrolling = false;
         });
         isScrolling = true;
       }
-    });
+    }, { passive: true });
 
-    // Smooth Scroll to Top
-    backBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // Click Events
+    btn.addEventListener('click', scrollToTop);
+    
+    // Touch Event for Mobile
+    btn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      scrollToTop(e);
+    }, { passive: false });
+
+    // Initial check
+    toggleButtonVisibility(btn);
+    
+    console.log('✅ Back to Top initialized');
   }
 
-  // WhatsApp Button
-  if (!document.getElementById('whatsappBtn')) {
-    const whatsappBtn = document.createElement('a');
-    whatsappBtn.id = 'whatsappBtn';
-    whatsappBtn.href = 'https://wa.me/+966536422477';
-    whatsappBtn.target = '_blank';
-    whatsappBtn.rel = 'noopener noreferrer';
-    whatsappBtn.setAttribute('aria-label', 'Contact us on WhatsApp');
-    whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
-    document.body.appendChild(whatsappBtn);
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
+
+})();
+
+// ==============================
+// WHATSAPP BUTTON - COMPLETE FIX
+// ==============================
+(function() {
+  'use strict';
+
+  function createWhatsAppButton() {
+    let btn = document.getElementById('whatsappBtn');
+    
+    if (!btn) {
+      btn = document.createElement('a');
+      btn.id = 'whatsappBtn';
+      btn.href = 'https://wa.me/+966536422477';
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+      btn.setAttribute('aria-label', 'Contact us on WhatsApp');
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+      document.body.appendChild(btn);
+      
+      console.log('✅ WhatsApp button created');
+    }
+    
+    // Force Display
+    btn.style.display = 'flex';
+    
+    // Touch Event for Mobile
+    btn.addEventListener('touchstart', function(e) {
+      e.stopPropagation();
+    }, { passive: true });
+    
+    return btn;
+  }
+
+  // Initialize
+  function init() {
+    createWhatsAppButton();
+    console.log('✅ WhatsApp button initialized');
+  }
+
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+// Animate cards on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => {
+                entry.target.classList.add('animate');
+            }, delay);
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all service cards
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach(card => observer.observe(card));
 });
