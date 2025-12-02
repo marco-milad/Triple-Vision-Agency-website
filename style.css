@@ -271,6 +271,7 @@ body {
 }
 
 /* HERO SECTION */
+/* HERO SECTION */
 .hero-section {
   background: var(--light-color);
   padding: 8rem 0 3rem;
@@ -345,7 +346,6 @@ body {
   display: inline-block;
   font-size: 1rem;
   border: 2px solid transparent;
-  /* تحسين الأداء */
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -362,7 +362,6 @@ body {
   box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
 }
 
-/* Focus state للـ accessibility */
 .custom-btn:focus,
 .btn-outline-dark:focus {
   outline: 3px solid var(--primary-color);
@@ -395,7 +394,6 @@ body {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  /* تحسين الأداء */
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -403,10 +401,9 @@ body {
 .hero-video video {
   object-fit: cover;
   width: 100%;
-  height: 600px;
+  height: 500px;
   display: block;
   cursor: pointer;
-  /* تحسين أداء الفيديو */
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -419,7 +416,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  pointer-events: none;
+  pointer-events: none; /* ✅ مهم جداً! */
   z-index: 1;
 }
 
@@ -435,12 +432,15 @@ body {
   border-radius: 50%;
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 10;
+  z-index: 100; /* ✅ زودنا الـ z-index */
   transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
+  pointer-events: auto; /* ✅ تأكد إنه بيستقبل الضغطات */
+  -webkit-tap-highlight-color: transparent; /* ✅ إزالة الهايلايت على الموبايل */
+  touch-action: manipulation; /* ✅ تحسين اللمس */
 }
 
 .mute-indicator:hover {
@@ -451,6 +451,10 @@ body {
 .mute-indicator:focus {
   outline: 3px solid var(--light-color);
   outline-offset: 2px;
+}
+
+.mute-indicator:active {
+  transform: scale(0.95); /* ✅ feedback للمس */
 }
 
 /* Responsive - Tablet */
@@ -513,13 +517,22 @@ body {
     font-size: 0.9rem;
   }
 
-  /* إخفاء الفيديو على الموبايل لتوفير bandwidth */
-  .hero-video {
-    display: none;
+  /* ✅ تصغير الفيديو بدل إخفائه */
+  .hero-video video {
+    height: 350px;
   }
 
-  /* عرض صورة بدل الفيديو */
-  .hero-section::before {
+  /* ✅ تصغير زرار الـ mute */
+  .mute-indicator {
+    width: 45px;
+    height: 45px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.3rem;
+  }
+
+  /* ❌ امسح أو علّق على الـ ::before */
+  /* .hero-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -531,7 +544,7 @@ body {
     background-position: center;
     opacity: 0.3;
     z-index: 0;
-  }
+  } */
 }
 
 /* Responsive - Small Mobile */
@@ -550,9 +563,23 @@ body {
     width: 100%;
     max-width: 250px;
   }
+
+  /* ✅ فيديو أصغر للشاشات الصغيرة جداً */
+  .hero-video video {
+    height: 280px;
+  }
+
+  /* ✅ زرار أصغر */
+  .mute-indicator {
+    width: 40px;
+    height: 40px;
+    bottom: 12px;
+    right: 12px;
+    font-size: 1.1rem;
+  }
 }
 
-/* تحسين الـ animations */
+/* Animations */
 .animate {
   opacity: 0;
   transform: translateY(20px);
@@ -608,7 +635,6 @@ body {
     display: none;
   }
 }
-
 /* ==============================
    FOOTER
 ============================== */
@@ -911,9 +937,9 @@ body {
 ============================== */
 @media (hover: hover) {
   #backToTop:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: var(--primary-hover);
     transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.9);
   }
 }
 
