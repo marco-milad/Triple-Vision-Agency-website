@@ -13,9 +13,8 @@ const video = document.getElementById('heroVideo');
 const muteIcon = document.getElementById('muteIcon');
 
 if (video && muteIcon) {
-  // Toggle Mute Function
   const toggleMute = (e) => {
-    e.stopPropagation(); // منع تشغيل الفيديو لما تضغط الزرار
+    e.stopPropagation();
     video.muted = !video.muted;
     muteIcon.textContent = video.muted ? '🔇' : '🔊';
     muteIcon.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
@@ -25,11 +24,9 @@ if (video && muteIcon) {
     }
   };
 
-  // Event Listeners for Button
   muteIcon.addEventListener('click', toggleMute);
   muteIcon.addEventListener('touchend', toggleMute);
 
-  // Toggle Mute on Video Click (Desktop only)
   video.addEventListener('click', (e) => {
     if (window.innerWidth > 768) {
       toggleMute(e);
@@ -38,12 +35,11 @@ if (video && muteIcon) {
 }
 
 // ==============================
-// BACK TO TOP BUTTON - COMPLETE FIX
+// BACK TO TOP BUTTON
 // ==============================
 (function() {
   'use strict';
 
-  // إنشاء الزرار
   function createBackToTopButton() {
     let btn = document.getElementById('backToTop');
     
@@ -54,14 +50,11 @@ if (video && muteIcon) {
       btn.setAttribute('aria-label', 'Back to top');
       btn.setAttribute('type', 'button');
       document.body.appendChild(btn);
-      
-      console.log('✅ Back to Top button created');
     }
     
     return btn;
   }
 
-  // Show/Hide على حسب الـ Scroll
   function toggleButtonVisibility(btn) {
     const scrollThreshold = 300;
     
@@ -72,7 +65,6 @@ if (video && muteIcon) {
     }
   }
 
-  // Scroll to Top Function
   function scrollToTop(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -81,15 +73,11 @@ if (video && muteIcon) {
       top: 0,
       behavior: 'smooth'
     });
-    
-    console.log('🚀 Scrolling to top');
   }
 
-  // Initialize
   function init() {
     const btn = createBackToTopButton();
     
-    // Scroll Event (Optimized)
     let isScrolling = false;
     window.addEventListener('scroll', function() {
       if (!isScrolling) {
@@ -101,22 +89,15 @@ if (video && muteIcon) {
       }
     }, { passive: true });
 
-    // Click Events
     btn.addEventListener('click', scrollToTop);
-    
-    // Touch Event for Mobile
     btn.addEventListener('touchend', function(e) {
       e.preventDefault();
       scrollToTop(e);
     }, { passive: false });
 
-    // Initial check
     toggleButtonVisibility(btn);
-    
-    console.log('✅ Back to Top initialized');
   }
 
-  // Run when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
@@ -126,7 +107,7 @@ if (video && muteIcon) {
 })();
 
 // ==============================
-// WHATSAPP BUTTON - COMPLETE FIX
+// WHATSAPP BUTTON
 // ==============================
 (function() {
   'use strict';
@@ -137,20 +118,16 @@ if (video && muteIcon) {
     if (!btn) {
       btn = document.createElement('a');
       btn.id = 'whatsappBtn';
-      btn.href = 'https://wa.me/+966536422477';
+      btn.href = 'https://wa.me/+20 109 832 4080';
       btn.target = '_blank';
       btn.rel = 'noopener noreferrer';
       btn.setAttribute('aria-label', 'Contact us on WhatsApp');
       btn.innerHTML = '<i class="fab fa-whatsapp"></i>';
       document.body.appendChild(btn);
-      
-      console.log('✅ WhatsApp button created');
     }
     
-    // Force Display
     btn.style.display = 'flex';
     
-    // Touch Event for Mobile
     btn.addEventListener('touchstart', function(e) {
       e.stopPropagation();
     }, { passive: true });
@@ -158,13 +135,10 @@ if (video && muteIcon) {
     return btn;
   }
 
-  // Initialize
   function init() {
     createWhatsAppButton();
-    console.log('✅ WhatsApp button initialized');
   }
 
-  // Run when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
@@ -172,26 +146,27 @@ if (video && muteIcon) {
   }
 
 })();
-// Animate cards on scroll
-const observerOptions = {
+
+// ==============================
+// SERVICE CARDS ANIMATION ON SCROLL
+// ==============================
+const cardsObserverOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '-100px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const cardsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const delay = entry.target.dataset.delay || 0;
-            setTimeout(() => {
-                entry.target.classList.add('animate');
-            }, delay);
-            observer.unobserve(entry.target);
+            entry.target.classList.add('animate');
+            cardsObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, cardsObserverOptions);
 
-// Observe all service cards
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach(card => observer.observe(card));
+    const serviceCards = document.querySelectorAll('.service-card-link');
+    serviceCards.forEach(card => {
+        cardsObserver.observe(card);
+    });
 });

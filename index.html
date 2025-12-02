@@ -1,31 +1,89 @@
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
+  <!-- Essential Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Triple Vision Agency - Your partner in branding, media production, photography, web design, and digital marketing solutions.">
-  <meta name="keywords" content="branding, media production, photography, web design, digital marketing, event management, social media">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>Triple Vision Agency - Creative Advertising & Digital Marketing</title>
+  <meta name="title" content="Triple Vision Agency - Creative Advertising & Digital Marketing">
+  <meta name="description" content="Triple Vision Agency is a creative advertising and digital marketing company dedicated to helping brands grow with clarity, impact, and modern strategy through visual storytelling and data-driven marketing.">
+  <meta name="keywords" content="social media management, ads management, branding, creative content, web development, media production, digital marketing, advertising agency, Triple Vision, photography, event management">
   <meta name="author" content="Triple Vision Agency">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
   
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Triple Vision Agency | Branding & Digital Marketing">
-  <meta property="og:description" content="Digital agency crafting impactful, user-centric experiences with cutting-edge design and technology.">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://triple-vision-agency-website.vercel.app/">
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://triple-vision-agency-website.vercel.app/">
+  <meta property="og:title" content="Triple Vision Agency - Creative Advertising & Digital Marketing">
+  <meta property="og:description" content="Triple Vision Agency blends visual storytelling, smart content production, and data-driven marketing to build strong identities that connect with audiences.">
+  <meta property="og:image" content="https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Triple Vision Agency">
+  <meta property="og:locale" content="en_US">
   
-  <title>Triple Vision Agency | Branding & Digital Marketing</title>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://triple-vision-agency-website.vercel.app/">
+  <meta name="twitter:title" content="Triple Vision Agency - Creative Advertising & Digital Marketing">
+  <meta name="twitter:description" content="Creative advertising and digital marketing company helping brands grow with clarity, impact, and modern strategy.">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png">
   
   <!-- Favicon -->
-  <!-- <link rel="icon" href="./images/logo2.png" type="image/x-icon"> -->
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png">
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png">
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png">
   
-  <!-- Google Fonts (Outfit) -->
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#ff8c00">
+  <meta name="msapplication-TileColor" content="#ff8c00">
+  <meta name="msapplication-TileImage" content="https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png">
+  
+  <!-- Preconnect to external resources for better performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  
+  <!-- Google Fonts (Outfit) -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
+  
+  <!-- Structured Data (Schema.org) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Triple Vision Agency",
+    "url": "https://triple-vision-agency-website.vercel.app/",
+    "logo": "https://res.cloudinary.com/dcui0elwh/image/upload/v1763917799/logo2_transparent_jjpgv6.png",
+    "description": "Triple Vision Agency is a creative advertising and digital marketing company dedicated to helping brands grow with clarity, impact, and modern strategy.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "EG"
+    },
+    "serviceType": [
+      "Social Media Management",
+      "Ads Management",
+      "Branding & Creative Content",
+      "Web Development",
+      "Media Production",
+      "Photography",
+      "Event Management"
+    ]
+  }
+  </script>
   
   <!-- CSS -->
   <link rel="stylesheet" href="./style.css">
@@ -89,96 +147,99 @@
     </section>
 
     <!-- services section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">WHAT WE ARE DOING</h2>
-                <p class="section-subtitle">We Medialize It!</p>
-            </div>
-            
-            <div class="services-wrapper">
-                <!-- Service 1 -->
-                <a href="media-production.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-film"></i>
-                        </div>
-                        <h3 class="service-title">Media Production</h3>
-                        <p class="service-description">
-                            At Mediology, we understand the power of the media to reach the minds and hearts of our audiences.
-                        </p>
-                    </div>
-                </a>
-                
-                <!-- Service 2 -->
-                <a href="event-planning.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <h3 class="service-title">Event Planning</h3>
-                        <p class="service-description">
-                            We don't just plan events. We design magical experiences to create happiness opportunities!
-                        </p>
-                    </div>
-                </a>
-                
-                <!-- Service 3 -->
-                <a href="digital-media.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-hashtag"></i>
-                        </div>
-                        <h3 class="service-title">Digital Media Services</h3>
-                        <p class="service-description">
-                            In the randomness of the social media jungle; only the unique voices can be heard, but not everything unique is good for your strategic goals.
-                        </p>
-                    </div>
-                </a>
-                
-                <!-- Service 4 -->
-                <a href="web-design.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="service-title">Web Design & Development</h3>
-                        <p class="service-description">
-                            We believe that the experience you give your clients online affects greatly how they see your brand. That's why we carefully craft your website to maintain the brand image you want to reflect.
-                        </p>
-                    </div>
-                </a>
-                
-                <!-- Service 5 -->
-                <a href="graphics-design.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3 class="service-title">Graphics Design & Branding</h3>
-                        <p class="service-description">
-                            Unlike others, we never forget the art at the core of the process. Yes designing your visual identity has branding and marketing goals to achieve, but there is always an artistic touch that captivates whoever sees it.
-                        </p>
-                    </div>
-                </a>
-                
-                <!-- Service 6 -->
-                <a href="pr-media.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-microphone"></i>
-                        </div>
-                        <h3 class="service-title">PR/Media Monitoring</h3>
-                        <p class="service-description">
-                            We take managing your public image to whole new levels. The way Mediology is positioned on the landscape gives it the unique spot to be involved extensively with the media's most prominent figures & publications from the highest calibers.
-                        </p>
-                    </div>
-                </a>
-            </div>
+<section class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">WHAT WE ARE DOING</h2>
+            <p class="section-subtitle">We Medialize It!</p>
         </div>
-    </section>
-
+        
+        <div class="services-wrapper">
+            <!-- Service 1 -->
+            <a href="media-production.html" class="service-card-link" data-delay="1">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="service-title">Media Production</h3>
+                    <p class="service-description">
+                        At Mediology, we understand the power of the media to reach the minds and hearts of our audiences.
+                    </p>
+                </div>
+            </a>
+            
+            <!-- Service 2 -->
+            <a href="event-planning.html" class="service-card-link" data-delay="2">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="service-title">Event Planning</h3>
+                    <p class="service-description">
+                        We don't just plan events. We design magical experiences to create happiness opportunities!
+                    </p>
+                </div>
+            </a>
+            
+            <!-- Service 3 -->
+            <a href="digital-media.html" class="service-card-link" data-delay="3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3 class="service-title">Digital Media Services</h3>
+                    <p class="service-description">
+                        In the randomness of the social media jungle; only the unique voices can be heard, but not everything unique is good for your strategic goals.
+                    </p>
+                </div>
+            </a>
+            
+            <!-- Service 4 -->
+            <a href="web-design.html" class="service-card-link" data-delay="4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title">Web Design & Development</h3>
+                    <p class="service-description">
+                        We believe that the experience you give your clients online affects greatly how they see your brand. That's why we carefully craft your website to maintain the brand image you want to reflect.
+                    </p>
+                </div>
+            </a>
+            
+            <!-- Service 5 -->
+            <a href="graphics-design.html" class="service-card-link" data-delay="5">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title">Graphics Design & Branding</h3>
+                    <p class="service-description">
+                        Unlike others, we never forget the art at the core of the process. Yes designing your visual identity has branding and marketing goals to achieve, but there is always an artistic touch that captivates whoever sees it.
+                    </p>
+                </div>
+            </a>
+            
+            <!-- Service 6 -->
+            <a href="pr-media.html" class="service-card-link" data-delay="6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3 class="service-title">PR/Media Monitoring</h3>
+                    <p class="service-description">
+                        We take managing your public image to whole new levels. The way Mediology is positioned on the landscape gives it the unique spot to be involved extensively with the media's most prominent figures & publications from the highest calibers.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
     <!-- services section -->
+
+    <!-- about sec -->
+     
+    <!-- about sec -->
   </main>
 
   <!-- Bootstrap JS -->
