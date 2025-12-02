@@ -270,19 +270,21 @@ body {
   opacity: 1;
 }
 
-/* ==============================
-   HERO SECTION
-============================== */
+/* HERO SECTION */
 .hero-section {
   background: var(--light-color);
   padding: 8rem 0 3rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .parent {
@@ -343,6 +345,9 @@ body {
   display: inline-block;
   font-size: 1rem;
   border: 2px solid transparent;
+  /* تحسين الأداء */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .custom-btn {
@@ -355,6 +360,13 @@ body {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+}
+
+/* Focus state للـ accessibility */
+.custom-btn:focus,
+.btn-outline-dark:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 .btn-outline-dark {
@@ -370,10 +382,12 @@ body {
   box-shadow: 0 5px 15px rgba(57, 1, 89, 0.3);
 }
 
+/* Hero Video */
 .hero-video {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .video-card {
@@ -381,6 +395,9 @@ body {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  /* تحسين الأداء */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero-video video {
@@ -389,6 +406,10 @@ body {
   height: 600px;
   display: block;
   cursor: pointer;
+  /* تحسين أداء الفيديو */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .video-overlay {
@@ -399,6 +420,193 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   pointer-events: none;
+  z-index: 1;
+}
+
+/* Mute Button Styling */
+.mute-indicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 140, 0, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.mute-indicator:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.mute-indicator:focus {
+  outline: 3px solid var(--light-color);
+  outline-offset: 2px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 6rem 0 2rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+    max-width: 700px;
+  }
+
+  .hero-video video {
+    height: 450px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 5rem 0 2rem;
+  }
+
+  .hero-container {
+    padding: 0 20px;
+  }
+
+  .line {
+    width: 50px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .custom-btn,
+  .btn-outline-dark {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* إخفاء الفيديو على الموبايل لتوفير bandwidth */
+  .hero-video {
+    display: none;
+  }
+
+  /* عرض صورة بدل الفيديو */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://res.cloudinary.com/dcui0elwh/video/upload/so_0,f_jpg,q_auto,w_800/v1763940851/Intro_dlaeds.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-btn,
+  .btn-outline-dark {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* تحسين الـ animations */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.animate.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.animate.delay-3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .custom-btn,
+  .btn-outline-dark {
+    transition: none;
+  }
+  
+  .custom-btn:hover,
+  .btn-outline-dark:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .hero-video,
+  .mute-indicator,
+  .hero-buttons {
+    display: none;
+  }
 }
 
 /* ==============================

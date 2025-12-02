@@ -93,58 +93,65 @@
   <!-- Main Content -->
   <main>
     <!-- Hero Section -->
-    <section class="hero-section" id="home">
-      <div class="hero-container">
+   <!-- Hero Section -->
+<section class="hero-section" id="home">
+  <div class="hero-container">
+    
+    <!-- Parent (Lines + Subtitle) -->
+    <div class="parent animate">
+      <div class="line"></div>
+      <h2 class="hero-subtitle">TRIPLE VISION AGENCY</h2>
+      <div class="line"></div>
+    </div>
+
+    <!-- Hero Title -->
+    <h1 class="hero-title animate delay-1">DIGITAL MARKETING AGENCY</h1>
+
+    <!-- Hero Text -->
+    <p class="hero-text animate delay-2">
+      Digital agency crafting impactful, user-centric experiences with cutting-edge design and technology for maximum success. Innovative digital agency crafting impactful solutions.
+    </p>
+
+    <!-- Hero Buttons -->
+    <div class="hero-buttons animate delay-3">
+      <a href="./contact.html" class="custom-btn" aria-label="Contact us">Contact Us</a>
+      <a href="#about" class="btn-outline-dark" aria-label="Learn more about us">Learn More</a>
+    </div>
+
+  </div>
+
+  <!-- Hero Video -->
+  <div class="hero-video">
+    <div class="video-card">
+      <video 
+        id="heroVideo" 
+        autoplay 
+        loop 
+        muted
+        playsinline 
+        webkit-playsinline
+        preload="metadata"
+        poster="https://res.cloudinary.com/dcui0elwh/video/upload/so_0,f_jpg,q_auto/v1763940851/Intro_dlaeds.jpg"
+        aria-label="Triple Vision Agency intro video">
         
-        <!-- Parent (Lines + Subtitle) -->
-        <div class="parent animate">
-          <div class="line"></div>
-          <h2 class="hero-subtitle">TRIPLE VISION AGENCY</h2>
-          <div class="line"></div>
-        </div>
+        <source
+          src="https://res.cloudinary.com/dcui0elwh/video/upload/q_auto,f_auto/v1763940851/Intro_dlaeds.webm"
+          type="video/webm">
+        <source
+          src="https://res.cloudinary.com/dcui0elwh/video/upload/q_auto,f_auto/v1763940851/Intro_dlaeds.mp4"
+          type="video/mp4">
+        Your browser does not support video playback.
+      </video>
 
-        <!-- Hero Title -->
-        <h1 class="hero-title animate delay-1">DIGITAL MARKETING AGENCY</h1>
+      <!-- Video Overlay -->
+      <div class="video-overlay"></div>
 
-        <!-- Hero Text -->
-        <p class="hero-text animate delay-2">
-          Digital agency crafting impactful, user-centric experiences with cutting-edge design and technology for maximum success. Innovative digital agency crafting impactful solutions.
-        </p>
+      <!-- Mute Button -->
+      <button id="muteIcon" class="mute-indicator" aria-label="Toggle video sound">🔇</button>
+    </div>
+  </div>
 
-        <!-- Hero Buttons -->
-        <div class="hero-buttons animate delay-3">
-          <a href="./contact.html" class="custom-btn" aria-label="Contact us">Contact Us</a>
-          <a href="#about" class="btn-outline-dark" aria-label="Learn more about us">Learn More</a>
-        </div>
-
-      </div>
-
-      <!-- Hero Video -->
-      <div class="hero-video">
-        <div class="video-card">
-          <video 
-            id="heroVideo" 
-            autoplay 
-            loop 
-            muted
-            playsinline 
-            webkit-playsinline
-            aria-label="Triple Vision Agency intro video">
-            <source
-              src="https://res.cloudinary.com/dcui0elwh/video/upload/v1763940851/Intro_dlaeds.mp4"
-              type="video/mp4">
-            Your browser does not support video playback.
-          </video>
-
-          <!-- Video Overlay -->
-          <div class="video-overlay"></div>
-
-          <!-- Mute Button -->
-          <button id="muteIcon" class="mute-indicator" aria-label="Toggle video sound">🔇</button>
-        </div>
-      </div>
-
-    </section>
+</section>
 
     <!-- services section -->
 <section class="services-section">
